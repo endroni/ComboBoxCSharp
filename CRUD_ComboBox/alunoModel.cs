@@ -17,12 +17,12 @@ namespace CRUD_ComboBox
         { }
         private static string DbConnectionString()
         {
-            sqlConnectionString = ConfigurationManager.ConnectionStrings["conexaoSQL"].ConnectionString;
+            sqlConnectionString = ConfigurationManager.ConnectionStrings["CRUD_ComboBox.Properties.Settings.banco"].ConnectionString;
             return sqlConnectionString;
         }
         private static SqlConnection DbConnection()
         {
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["conexaoSQL"].ConnectionString);
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CRUD_ComboBox.Properties.Settings.banco"].ConnectionString);
             sqlConnection.Open();
             return sqlConnection;
         }
@@ -64,11 +64,11 @@ namespace CRUD_ComboBox
                 throw ex;
             }
         }
-        public static Aluno GetAluno(int id)
+        public static alunoEnt GetAluno(int id)
         {
             SqlDataAdapter da = null;
             DataTable dt = new DataTable();
-            Aluno aluno = new Aluno();
+            alunoEnt aluno = new alunoEnt();
             try
             {
                 using (var cmd = DbConnection().CreateCommand())
@@ -76,7 +76,7 @@ namespace CRUD_ComboBox
                     cmd.CommandText = "SELECT * FROM alunos Where id_aluno=" + id;
                     da = new SqlDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
-                    aluno.id_aluno = Convert.ToInt32(dt.Rows[0]["id_aluno"]);
+                    aluno.IdAluno = Convert.ToInt32(dt.Rows[0]["id_aluno"]);
                     aluno.Nome = dt.Rows[0]["Nome"].ToString();
                     aluno.Endereco = dt.Rows[0]["Endereco"].ToString();
                     aluno.Email = dt.Rows[0]["Email"].ToString();
@@ -89,7 +89,7 @@ namespace CRUD_ComboBox
                 throw ex;
             }
         }
-        public static void Add(Aluno aluno)
+        public static void Add(alunoEnt aluno)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace CRUD_ComboBox
                 throw ex;
             }
         }
-        public static void Update(Aluno aluno)
+        public static void Update (alunoEnt aluno)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace CRUD_ComboBox
                     if (aluno != null)
                     {
                         cmd.CommandText = "UPDATE alunos SET Nome=@Nome,Email=@Email,Endereco=@Endereco,Telefone = @Telefone WHERE id_aluno = @Id";
-                        cmd.Parameters.AddWithValue("@Id", aluno.id_aluno);
+                        cmd.Parameters.AddWithValue("@Id", aluno.IdAluno);
                         cmd.Parameters.AddWithValue("@Nome", aluno.Nome);
                         cmd.Parameters.AddWithValue("@Endereco", aluno.Endereco);
                         cmd.Parameters.AddWithValue("@Email", aluno.Email);

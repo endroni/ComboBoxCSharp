@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRUD_ComboBox
 {
-    class alunoEnt
+    public class alunoEnt
     {
         public int IdAluno { get; set; }
         public string Nome { get; set; }

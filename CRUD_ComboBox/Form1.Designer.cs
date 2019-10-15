@@ -71,6 +71,7 @@
             this.cboAlunos.Name = "cboAlunos";
             this.cboAlunos.Size = new System.Drawing.Size(329, 21);
             this.cboAlunos.TabIndex = 2;
+            this.cboAlunos.SelectedIndexChanged += new System.EventHandler(this.cboAlunos_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -151,6 +152,7 @@
             this.btnIncluir.TabIndex = 5;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = true;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // btnAlterar
             // 
@@ -160,6 +162,7 @@
             this.btnAlterar.TabIndex = 5;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExcluir
             // 
@@ -169,6 +172,7 @@
             this.btnExcluir.TabIndex = 5;
             this.btnExcluir.Text = "Deletar";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSair
             // 
